@@ -80,6 +80,8 @@ profiles CPU time rather than C<gettimeofday>
 
 =back
 
+patches are always welcome!
+
 =head1 AUTHOR
 
 Tatsuhiko Miyagawa E<lt>miyagawa@bulknews.netE<gt>
