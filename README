@@ -1,0 +1,41 @@
+NAME
+    Apache::Profiler - profiles time seconds needed for every request
+
+SYNOPSIS
+      <Location /cgi-bin>
+      PerlInitHandler Apache::Profiler
+      </Location>
+
+DESCRIPTION
+    Apache::Profiler is a mod_perl init (and cleanup) handler to profile
+    time taken to process one request. Profiled data is reported to the
+    Apache Log file. It'd be useful to profile some heavy application taking
+    a long time to proceed.
+
+    It uses the Time::HiRes manpage to take milliseconds, and outputs
+    profiled data as Apache log "notice" level like:
+
+      [Tue Oct  7 20:52:53 2003] [notice] [client 127.0.0.1] uri: /test.html takes 0.0648910999298096 seconds
+
+CONFIGURATION
+    ProfileLongerThan
+          PerlSetVar ProfileLongerThan 0.5
+
+        specifies lower limit of request time taken to profile. This example
+        only logs requests which takes longer than 0.5 seconds. This value
+        is set to 0 by default, which means it logs all requests.
+
+TODO
+    *   customizable log format (exportable to some profiling tools)
+
+    *   profiles CPU time rather than "gettimeofday"
+
+AUTHOR
+    Tatsuhiko Miyagawa <miyagawa@bulknews.net>
+
+    This library is free software; you can redistribute it and/or modify it
+    under the same terms as Perl itself.
+
+SEE ALSO
+    the Apache::Log manpage, the Time::HiRes manpage
+

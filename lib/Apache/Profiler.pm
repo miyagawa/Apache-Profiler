@@ -32,7 +32,7 @@ __END__
 
 =head1 NAME
 
-Apache::Profiler - profiles time needed for one request
+Apache::Profiler - profiles time seconds needed for every request
 
 =head1 SYNOPSIS
 
@@ -43,11 +43,14 @@ Apache::Profiler - profiles time needed for one request
 =head1 DESCRIPTION
 
 Apache::Profiler is a mod_perl init (and cleanup) handler to profile
-time taken to process one request to the Apache Log file. It'd be
-useful to profile some heavy application taking a long time to proceed.
+time taken to process one request. Profiled data is reported to the
+Apache Log file. It'd be useful to profile some heavy application
+taking a long time to proceed.
 
-It uses L<Time::HiRes> to take millisecond, and outputs profiled data
-as Apache log C<notice> level.
+It uses L<Time::HiRes> to take milliseconds, and outputs profiled data
+as Apache log C<notice> level like:
+
+  [Tue Oct  7 20:52:53 2003] [notice] [client 127.0.0.1] uri: /test.html takes 0.0648910999298096 seconds
 
 =head1 CONFIGURATION
 
@@ -59,7 +62,7 @@ as Apache log C<notice> level.
 
 specifies lower limit of request time taken to profile. This example
 only logs requests which takes longer than 0.5 seconds. This value is
-set to 0 by default, which means it logs every requests.
+set to 0 by default, which means it logs all requests.
 
 =head1 TODO
 
@@ -84,6 +87,6 @@ it under the same terms as Perl itself.
 
 =head1 SEE ALSO
 
-L<Apache::Log>
+L<Apache::Log>, L<Time::HiRes>
 
 =cut
