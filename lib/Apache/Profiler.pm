@@ -64,6 +64,8 @@ specifies lower limit of request time taken to profile. This example
 only logs requests which takes longer than 0.5 seconds. This value is
 set to 0 by default, which means it logs all requests.
 
+=back
+
 =head1 TODO
 
 =over 4
